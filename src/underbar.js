@@ -97,16 +97,41 @@ return n === undefined ? array.length : array.slice(Math.max(array.length-n,0),a
 
   // Return all elements of an array that pass a truth test.
   _.filter = function(collection, test) {
+      var arr = [];
+    _.each(collection, function(val, index, sum){
+
+      if (test(val) === true) {
+
+        arr.push(val);
+      }
+    });
+
+    return arr;
   };
 
   // Return all elements of an array that don't pass a truth test.
   _.reject = function(collection, test) {
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
+    var arr = [];
+    _.filter(collection, function(elem){
+      if (!test(elem)) {
+        arr.push(elem);
+      }
+    });
+    return arr;
   };
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+
+    var results = [];
+    _.each(array, function(val){
+      if(_.indexOf(results, val) === -1){
+      results.push(val);
+      }
+    });
+    return results; 
   };
 
 
