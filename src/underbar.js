@@ -213,7 +213,7 @@ return n === undefined ? array.length : array.slice(Math.max(array.length-n,0),a
     }, false);
   };
 
-
+  //this is the start of my new computer transfer
   // Determine whether all of the elements match a truth test.
   _.every = function(collection, iterator) {
     // TIP: Try re-using reduce() here.
