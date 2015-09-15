@@ -67,17 +67,6 @@ return n === undefined ? array.length : array.slice(Math.max(array.length-n,0),a
   };
 
 
-
-
-
-
-
-
-
-
-
-
-
   // Returns the index at which value can be found in the array, or -1 if value
   // is not present in the array.
   _.indexOf = function(array, target){
@@ -88,7 +77,7 @@ return n === undefined ? array.length : array.slice(Math.max(array.length-n,0),a
 
     _.each(array, function(item, index) {
       if (item === target && result === -1) {
-        result = index;
+        result = index +1;
       }
     });
 
