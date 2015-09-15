@@ -67,6 +67,20 @@ return n === undefined ? array.length : array.slice(Math.max(array.length-n,0),a
   };
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 5953aaf94d4539fce09d71a32e8376f47f3954ec
   // Returns the index at which value can be found in the array, or -1 if value
   // is not present in the array.
   _.indexOf = function(array, target){
@@ -177,6 +191,7 @@ return n === undefined ? array.length : array.slice(Math.max(array.length-n,0),a
   //   }); // should be 5, regardless of the iterator function passed in
   //          No accumulator is given so the first element is used.
   _.reduce = function(collection, iterator, accumulator) {
+<<<<<<< HEAD
   if (accumulator === undefined) { 
     if(Array.isArray(collection)) {
      accumulator = collection[0]; 
@@ -191,6 +206,21 @@ return n === undefined ? array.length : array.slice(Math.max(array.length-n,0),a
    return accumulator;
   };
 //reduce is completed
+=======
+
+        
+    _.each(collection, function(val) {
+        
+        if (accumulator === undefined){
+            accumulator = collection[0];
+        }
+        
+        accumulator = iterator(accumulator, val);
+    });
+    return accumulator;
+  };
+
+>>>>>>> 5953aaf94d4539fce09d71a32e8376f47f3954ec
   // Determine if the array or object contains a given value (using `===`).
   _.contains = function(collection, target) {
     // TIP: Many iteration problems can be most easily expressed in
