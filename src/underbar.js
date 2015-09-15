@@ -77,7 +77,7 @@ return n === undefined ? array.length : array.slice(Math.max(array.length-n,0),a
 
     _.each(array, function(item, index) {
       if (item === target && result === -1) {
-        result = index +1;
+        result = index;
       }
     });
 
