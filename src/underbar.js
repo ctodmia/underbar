@@ -67,23 +67,9 @@ return n === undefined ? array.length : array.slice(Math.max(array.length-n,0),a
   };
 
 
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 5953aaf94d4539fce09d71a32e8376f47f3954ec
   // Returns the index at which value can be found in the array, or -1 if value
   // is not present in the array.
-  _.indexOf = function(array, target, bli){
+  _.indexOf = function(array, target){
     // TIP: Here's an example of a function that needs to iterate, which we've
     // implemented for you. Instead of using a standard `for` loop, though,
     // it uses the iteration helper `each`, which you will need to write.
@@ -191,7 +177,6 @@ return n === undefined ? array.length : array.slice(Math.max(array.length-n,0),a
   //   }); // should be 5, regardless of the iterator function passed in
   //          No accumulator is given so the first element is used.
   _.reduce = function(collection, iterator, accumulator) {
-<<<<<<< HEAD
   if (accumulator === undefined) { 
     if(Array.isArray(collection)) {
      accumulator = collection[0]; 
@@ -206,21 +191,6 @@ return n === undefined ? array.length : array.slice(Math.max(array.length-n,0),a
    return accumulator;
   };
 //reduce is completed
-=======
-
-        
-    _.each(collection, function(val) {
-        
-        if (accumulator === undefined){
-            accumulator = collection[0];
-        }
-        
-        accumulator = iterator(accumulator, val);
-    });
-    return accumulator;
-  };
-
->>>>>>> 5953aaf94d4539fce09d71a32e8376f47f3954ec
   // Determine if the array or object contains a given value (using `===`).
   _.contains = function(collection, target) {
     // TIP: Many iteration problems can be most easily expressed in
@@ -237,7 +207,21 @@ return n === undefined ? array.length : array.slice(Math.max(array.length-n,0),a
   // Determine whether all of the elements match a truth test.
   _.every = function(collection, iterator) {
     // TIP: Try re-using reduce() here.
+    iterator = iterator || _.identity;
+    return _.reduce(collection, function(isThere, item){
+
+      if (isThere) {
+        return  !!iterator(item);
+      }
+      return false;
+      
+    }, true)
+
   };
+
+  
+//[true, 1, null, 'yes']
+// accumulated: true  val: true
 
   // Determine whether any of the elements pass a truth test. If no iterator is
   // provided, provide a default one
