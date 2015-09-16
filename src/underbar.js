@@ -219,7 +219,7 @@ return n === undefined ? array.length : array.slice(Math.max(array.length-n,0),a
 
   };
 
-  
+
 //[true, 1, null, 'yes']
 // accumulated: true  val: true
 
@@ -297,7 +297,25 @@ return n === undefined ? array.length : array.slice(Math.max(array.length-n,0),a
   // already computed the result for the given argument and return that value
   // instead if possible.
   _.memoize = function(func) {
+    
+    var result = [];
+    return function(){
+      var arg = [].slice.call(arguments);
+       //console.log(arg);
+    if (result[arg] === undefined){ 
+      //console.log(result[arg]);
+        result = func.apply(this, arg);
+        //console.log(result[arg]);
+    }
+    return result;
+    };
   };
+//function fibonacci(n){
+  //if (n === 0 || n ===1){
+    //return n;
+  //} else {
+  //return fibonacci(n-1) + fibonacci(n-2);}};
+
 
   // Delays a function for the given number of milliseconds, and then calls
   // it with the arguments supplied.
@@ -305,6 +323,9 @@ return n === undefined ? array.length : array.slice(Math.max(array.length-n,0),a
   // The arguments for the original function are passed after the wait
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
+
+
+
   _.delay = function(func, wait) {
   };
 
