@@ -227,6 +227,11 @@ return n === undefined ? array.length : array.slice(Math.max(array.length-n,0),a
   // provided, provide a default one
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
+
+      return !_.every(collection, function(anyThere, item){
+        iterator = iterator || _.identity;
+          return !iterator(anyThere);
+      });
   };
 
 
