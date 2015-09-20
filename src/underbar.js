@@ -254,18 +254,28 @@ return n === undefined ? array.length : array.slice(Math.max(array.length-n,0),a
   //     bla: "even more stuff"
   //   }); // obj1 now contains key1, key2, key3 and bla
   _.extend = function(obj) {
-
-       _.each(arguments, function(argument) {
-            for (var prop in arguments) {
-                obj[prop] = arguments[prop];
-            }
+    //we want to be able to copy over all the obj from the source over to the destination. 
+    //_.extend(destination, *sources)
+    //return the destination obj
+         _.each(arguments, function (argument) {
+        _.each(argument, function(key, value) {
+          obj[value] = key; 
         });
-    return obj;
+    });
+    return obj; //returned destination object
   };
 
   // Like extend, but doesn't ever overwrite a key that already
   // exists in obj
   _.defaults = function(obj) {
+    for(var i = 1; i < arguments.length; i++){
+      for(var key in arguments[i]){
+        if(obj[key] === undefined){
+          obj[key] = arguments[i][key];
+        }
+      }
+    }
+    return obj;
   };
 
 
