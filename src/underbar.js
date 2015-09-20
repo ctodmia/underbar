@@ -349,6 +349,14 @@ return n === undefined ? array.length : array.slice(Math.max(array.length-n,0),a
 
 
   _.delay = function(func, wait) {
+
+    //var timeoutID = window.setTimeout(code, [delay]);
+
+      var arg = [].slice.call(arguments, 2);
+      //var timeoutID = window.setTimeout(code, [delay]);
+    return setTimeout(function(){
+      func.apply(this, arg); //function to be called after a period of waiting
+    }, wait);
   };
 
 
