@@ -371,6 +371,17 @@ return n === undefined ? array.length : array.slice(Math.max(array.length-n,0),a
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
+
+    //how do we randomize the contents of an array's contents?
+    var copyArr = array.slice(0);
+    var shuffArr = array.slice(0);
+    _.each(shuffArr, function(item,i) {
+      var rand = Math.floor((Math.random()*copyArr.length));
+      shuffArr[i] = copyArr[rand];
+      copyArr.splice(rand,1);
+    });
+    return shuffArr;
+    
   };
 
 
